@@ -1,0 +1,11 @@
+@import "../../../styles/variables";
+
+.sidebar-pivot {
+  .ms-Button {
+    width: 50%;
+  }
+
+  .ms-Button-flexContainer {
+    justify-content: center;
+  }
+}
