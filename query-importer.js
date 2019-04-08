@@ -71,7 +71,7 @@ function saveSampleQueries() {
 
 import { ISampleQuery } from "../types/query-samples";
 
-export const SampleQueries: ISampleQuery[] = [
+const sampleQueries: ISampleQuery[] = [
   `;
   let formattedQueryArr = []
   for (let i = 0; i < queries.length; i++) {
@@ -85,7 +85,27 @@ export const SampleQueries: ISampleQuery[] = [
 
   outStr += formattedQueryArr.join(",\n");
 
-  outStr += ']'
+  outStr += ']\n' +
+    `
+  function parseSampleQueries(samples: any): any {
+    return samples.reduce((result: object, sample: ISampleQuery) => {
+      const category = sample.category;
+  
+      // @ts-ignore
+      if (result[category] === undefined) {
+        // @ts-ignore
+        result[category] = [sample];
+      }
+  
+      // @ts-ignore
+      result[category].push(sample);
+  
+      return result;
+  }, {});
+}
+
+  export const samples = parseSampleQueries(sampleQueries);
+    `
 
   fs.writeFile("src/generate-queries/gen-queries.ts", outStr, function (err) {
     if (err) {

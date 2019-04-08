@@ -9,10 +9,10 @@ const loggerMiddleware = createLogger({
     collapsed: true,
 });
 
-export const store =  (initialState: object): Store => {
+export const store =  (preloadedState: object): Store => {
     return createStore(
         reducers,
-        initialState,
+        preloadedState,
         applyMiddleware(thunkMiddleware, loggerMiddleware, localStorageMiddleware),
         );
 };

@@ -7,7 +7,7 @@
 
 import { ISampleQuery } from "../types/query-samples";
 
-export const SampleQueries: ISampleQuery[] = [
+const sampleQueries: ISampleQuery[] = [
   {
     "category": "Getting Started",
     "method": "GET",
@@ -1438,3 +1438,23 @@ export const SampleQueries: ISampleQuery[] = [
     "tip": "Please enable the Notifications.ReadWrite.CreatedByApp permission in order to use this query.  A visual notification is a notification that a user can see by default within the notification center of the target platform. Note - This query will only work with a sample application by default. See https://aka.ms/projectRomeSamples/ for additional info.",
     "skipTest": false
 }]
+
+  function parseSampleQueries(samples: any): any {
+    return samples.reduce((result: object, sample: ISampleQuery) => {
+      const category = sample.category;
+  
+      // @ts-ignore
+      if (result[category] === undefined) {
+        // @ts-ignore
+        result[category] = [sample];
+      }
+  
+      // @ts-ignore
+      result[category].push(sample);
+  
+      return result;
+  }, {});
+}
+
+  export const samples = parseSampleQueries(sampleQueries);
+    
