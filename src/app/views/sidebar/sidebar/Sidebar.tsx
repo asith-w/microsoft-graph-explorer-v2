@@ -1,6 +1,8 @@
 import { Pivot, PivotItem } from 'office-ui-fabric-react';
 import React, { Component } from 'react';
 
+import { Samples } from '../samples/Samples';
+
 import './sidebar.scss';
 
 export class Sidebar extends Component {
@@ -11,7 +13,7 @@ export class Sidebar extends Component {
           <PivotItem
             headerText='Samples'
           >
-            <p>Samples</p>
+            <Samples/>
           </PivotItem>
           <PivotItem
             headerText='History'

@@ -26,6 +26,7 @@
     "eslint-plugin-jsx-a11y": "6.1.2",
     "eslint-plugin-react": "7.12.4",
     "express": "^4.16.4",
+    "fast-csv": "^2.4.1",
     "file-loader": "2.0.0",
     "fork-ts-checker-webpack-plugin-alt": "0.4.14",
     "fs-extra": "7.0.1",
@@ -71,7 +72,8 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "lint": "tslint --project tsconfig.json -c tslint.json"
+    "lint": "tslint --project tsconfig.json -c tslint.json",
+    "import:samples": "node query-importer.js"
   },
   "eslintConfig": {
     "extends": "react-app"
